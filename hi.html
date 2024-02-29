@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Wardrobe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Digital Wardrobe</h1>
+    <div class="wardrobe">
+      <div class="wardrobe-item">
+        <img src="top.png" alt="Top 1">
+        <button class="remove-background-btn">X</button>
+        <button class="insert-top-btn" onclick="handleImageUpload('top')">Insert Top Image</button>
+        <input type="file" id="top-image-input" style="display: none;" accept="image/*" multiple>
+      </div>
+      <div class="wardrobe-item">
+        <img src="bottom.png" alt="Bottom 1">
+        <button class="remove-background-btn">X</button>
+        <button class="insert-bottom-btn" onclick="handleImageUpload('bottom')">Insert Bottom Image</button>
+        <input type="file" id="bottom-image-input" style="display: none;" accept="image/*" multiple>
+      </div>
+      <!-- Add more wardrobe items dynamically -->
+    </div>
+    <div class="view-buttons">
+      <button class="view-top-images-btn" onclick="viewUploadedImages('top')">View Uploaded Top Images</button>
+      <button class="view-bottom-images-btn" onclick="viewUploadedImages('bottom')">View Uploaded Bottom Images</button>
+      <button class="create-new-outfit-btn" onclick="createNewOutfit()">Create New Outfit</button>
+    </div>
+    <div id="uploaded-images-container"></div>
+  </div>
+
+  <script>
+    function handleImageUpload(type) {
+      var inputElement;
+      if (type === 'top') {
+        inputElement = document.getElementById('top-image-input');
+      } else if (type === 'bottom') {
+        inputElement = document.getElementById('bottom-image-input');
+      }
+
+      // Trigger click event on the file input element
+      inputElement.click();
+
+      // Handle file selection
+      inputElement.addEventListener('change', function(event) {
+        var files = event.target.files;
+        if (files.length > 0) {
+          for (var i = 0; i < files.length; i++) {
+            // Do something with each selected file (e.g., upload it)
+            console.log('Selected file:', files[i]);
+            // You can add your file upload logic here
+          }
+        }
+      });
+    }
+
+    function viewUploadedImages(type) {
+      var imageInput;
+      if (type === 'top') {
+        imageInput = document.getElementById('top-image-input');
+      } else if (type === 'bottom') {
+        imageInput = document.getElementById('bottom-image-input');
+      }
+      var uploadedImagesContainer = document.getElementById('uploaded-images-container');
+
+      // Clear previous images
+      uploadedImagesContainer.innerHTML = '';
+
+      // Display uploaded images
+      if (imageInput.files.length > 0) {
+        for (var i = 0; i < imageInput.files.length; i++) {
+          var image = document.createElement('img');
+          image.src = URL.createObjectURL(imageInput.files[i]);
+          if (type === 'top') {
+            image.alt = 'Uploaded Top Image';
+          } else if (type === 'bottom') {
+            image.alt = 'Uploaded Bottom Image';
+          }
+          uploadedImagesContainer.appendChild(image);
+        }
+      }
+    }
+
+    function createNewOutfit() {
+      var topImages = document.getElementById('top-image-input').files;
+      var bottomImages = document.getElementById('bottom-image-input').files;
+
+      if (topImages.length === 0 || bottomImages.length === 0) {
+        alert('Please upload at least one top image and one bottom image.');
+        return;
+      }
+
+      // Select one random image from each category
+      var randomTopIndex = Math.floor(Math.random() * topImages.length);
+      var randomBottomIndex = Math.floor(Math.random() * bottomImages.length);
+      var randomTopImage = topImages[randomTopIndex];
+      var randomBottomImage = bottomImages[randomBottomIndex];
+
+      // Display selected images
+      var outfitContainer = document.getElementById('outfit-container');
+      outfitContainer.innerHTML = '';
+
+      var topImageElement = document.createElement('img');
+      topImageElement.src = URL.createObjectURL(randomTopImage);
+      topImageElement.alt = 'Selected Top Image';
+      outfitContainer.appendChild(topImageElement);
+
+      var bottomImageElement = document.createElement('img');
+      bottomImageElement.src = URL.createObjectURL(randomBottomImage);
+      bottomImageElement.alt = 'Selected Bottom Image';
+      outfitContainer.appendChild(bottomImageElement);
+    }
+  </script>
+</body>
+</html>

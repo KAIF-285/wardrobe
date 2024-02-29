@@ -1,0 +1,128 @@
+/* styles.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2; /* Change background color */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 50px auto; /* Adjust margin for better alignment */
+  padding: 20px;
+  background-color: #ffffff; /* Add background color */
+  border-radius: 15px; /* Add border radius for container */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+h1 {
+  text-align: center;
+  color: #343a40;
+  margin-bottom: 30px;
+}
+
+.wardrobe {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+.wardrobe-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.wardrobe-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px 10px 0 0;
+}
+
+.remove-background-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #343a40;
+  border: none;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.remove-background-btn:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.insert-top-btn,
+.insert-bottom-btn {
+  display: block;
+  margin: 10px auto; /* Adjust margin */
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.insert-top-btn:hover,
+.insert-bottom-btn:hover {
+  background-color: #0056b3;
+}
+
+.view-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px; /* Adjust margin */
+}
+
+.view-buttons button {
+  margin: 0 10px; /* Adjust margin */
+  padding: 12px 20px; /* Adjust padding */
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-buttons button:hover {
+  background-color: #218838;
+}
+
+#uploaded-images-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px; /* Adjust margin */
+}
+
+#uploaded-images-container img {
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#create-new-outfit-btn {
+  display: block;
+  margin: 30px auto; /* Adjust margin */
+  padding: 12px 30px; /* Adjust padding */
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#create-new-outfit-btn:hover {
+  background-color: #c82333;
+}
